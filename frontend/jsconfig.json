@@ -8,6 +8,9 @@
       "@/ui/*": ["ui/*"],
       "@/utils/*": ["utils/*"],
       "@/constans/*": ["constans/*"],
+      "@/services/*": ["services/*"],
+      "@/__tests__/*": ["__tests__/*"],
+
     }
   }
 }

@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import KalamehFont from "@/constans/localFont";
 import "@/styles/globals.css";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: {
@@ -14,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body className={`${KalamehFont.variable} sans`}>
-        <Header />
+        <Toaster />
         {children}
       </body>
     </html>
