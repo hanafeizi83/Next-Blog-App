@@ -4,6 +4,10 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/styles/*": ["styles/*"],
+      "@/hook/*": ["hook/*"],
+      "@/ui/*": ["ui/*"],
+      "@/utils/*": ["utils/*"],
+      "@/constans/*": ["constans/*"],
     }
   }
 }
