@@ -6,6 +6,8 @@ import Navlink from "./Navlink"
 import { useState } from "react"
 import useOutsideClick from "@/hook/useOutsideClick";
 import Link from "next/link";
+import { useAuth } from "context/AuthContext";
+import AvatarUser from "@/ui/AvatarUser";
 
 const navlinkes = [
   {
@@ -22,7 +24,9 @@ const navlinkes = [
 
 function Header() {
   const [isShow, setIsShow] = useState(false);
-  const ref = useOutsideClick(() => setIsShow(false))
+  const ref = useOutsideClick(() => setIsShow(false));
+  const { user } = useAuth();
+
   return (
     <div className="w-full overflow-x-hidden">
       <div className="container">
@@ -45,10 +49,32 @@ function Header() {
 
             <Navlink data={navlinkes} />
             <Search className='lg:flex hidden' />
-            <Button className={'text-secondary-0 rounded-lg w-full lg:w-auto'}
-            >
-              <Link href='/signin'>ورود</Link>
-            </Button>
+            {
+              user ?
+                <div className="grid lg:grid-cols-[3rem_1fr] grid-rows-2 lg:grid-rows-1 gap-x-2 items-center">
+                  <Link href='/profile'>
+                    <AvatarUser
+                      src={user?.avatarUrl}
+                      alt='userProfile'
+                      className='h-10 w-10 self-center justify-self-center'
+                    />
+                  </Link>
+
+                  <div className="text-center lg:text-right">
+                    <Link href='/profile'>
+                      <h2 className="!p-0 !m-0 font-medium text-secondary-800 text-md">{user?.name}</h2>
+                      <p className="text-sm text-secondary-500 p-0">{user?.email}</p>
+                    </Link>
+
+                  </div>
+                </div>
+
+                :
+                <Button className={'text-secondary-0 rounded-lg w-full lg:w-auto'}>
+                  <Link href='/signin'>ورود</Link>
+                </Button>
+            }
+
           </div>
           <button
             className="btn"

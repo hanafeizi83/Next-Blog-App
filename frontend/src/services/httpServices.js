@@ -1,19 +1,34 @@
 import axios from "axios";
 
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const app = axios.create({
     baseURL: BASE_URL,
     withCredentials: true
 });
 
-app.interceptors.response.use(
+app.interceptors.request.use(
     res => res,
     err => {
-        console.log(err);
-        
         return Promise.reject(err)
     }
-    )
+)
+
+app.interceptors.response.use((res) => res,
+    async (err) => {
+        const originalConfig = err.config;
+        if (err.status === 401 && !originalConfig._retry) {
+            originalConfig._retry = false;
+            try {
+                const { data } = await axios.get(`${BASE_URL}/user/refresh-token`, {
+                    withCredentials: true
+                });
+                if (data) return app(originalConfig);
+            } catch (error) {
+                return Promise.reject(error)
+            }
+        }
+        return Promise.reject(err)
+    })
 
 const http = {
     get: app.get,

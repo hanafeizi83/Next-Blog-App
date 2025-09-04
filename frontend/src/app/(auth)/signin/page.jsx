@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup';
 import toast from "react-hot-toast";
 import { signinApi } from "@/services/authServices"
+import { useAuth } from "context/AuthContext";
 
 const schema = yup.object({
   email: yup.string().email('ایمیل نامعتبر است').required('ایمیل الزامی است'),
@@ -18,14 +19,9 @@ function SigninPage() {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   });
+  const { signin } = useAuth();
   const onSubmit = async (values) => {
-    try {
-      const { message } = await signinApi(values);
-      toast.success(message);
-    } catch (error) {
-      toast.error(error?.response?.data?.message);
-    }
-
+    await signin(values);
   }
   return (
     <div className="w-full">
