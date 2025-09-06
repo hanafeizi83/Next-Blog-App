@@ -14,11 +14,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fa" dir="rtl">
-      <body className={`${KalamehFont.variable} sans`}>
+    <html lang="fa" dir='rtl'>
+      <body
+        className={`${KalamehFont.variable} sans`}
+      >
         <AuthProvider>
           <Toaster />
-          {children}
+          <Header />
+          <div className="container xl:max-w-screen-xl">
+            {children}
+          </div>
         </AuthProvider>
       </body>
     </html>

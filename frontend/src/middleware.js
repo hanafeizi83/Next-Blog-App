@@ -14,8 +14,11 @@ export async function middleware(request) {
         if (user) return NextResponse.redirect(new URL('/', request.nextUrl))
     }
 
+    const headers = new Headers(request.headers);
+    headers.set("x-current-path", request.nextUrl.pathname);
+    return NextResponse.next({ headers });
 }
 
 export const config = {
-    matcher: ['/profile/:path*', '/signin', '/signup']
+    matcher: ['/profile/:path*', '/signin', '/signup' ,"/((?!api|_next/static|_next/image|favicon.ico).*)"]
 }
