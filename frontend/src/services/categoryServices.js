@@ -35,5 +35,6 @@ export async function getCategoriesApi() {
     const newCategories = categories.map(item => {
         return { ...item, icon: categoriesIcon[item.englishTitle].icon }
     })
-    return newCategories;
+
+    return newCategories
 }

@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className='w-full lg:h-[calc(100vh-6rem)] mt-6'>
-    <div className='container h-full bg-[url(/images/world.png)] bg-no-repeat bg-cover  grid grid-cols-1 grid-rows-2 lg:grid-rows-1 lg:grid-cols-[1fr_35rem] gap-6 '>
+    <div className='h-full bg-[url(/images/world.png)] bg-no-repeat bg-cover  grid grid-cols-1 grid-rows-2 lg:grid-rows-1 lg:grid-cols-[1fr_35rem] gap-6 '>
       <div className='col-span-1 grid grid-cols-2 grid-rows-2 gap-3 row-start-2 lg:row-start-1'>
         <div className='col-span-1 row-span-2 h-full w-full overflow-hidden  content-center'>
           <Avatar

@@ -95,6 +95,14 @@
     @apply size-9 absolute bottom-0 left-0 p-2 z-60 !cursor-pointer text-secondary-500
   }
 
+  .badge{
+    @apply rounded-full text-xs text-center py-0.5
+  }
+
+  .badge--secondary{
+    @apply bg-secondary-400 px-4 
+  }
+
   @keyframes navlinkWidth {
     0% {
       width: 0;

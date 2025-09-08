@@ -1,13 +1,16 @@
+import { cookies } from "next/headers";
 import BlogsList from "./_components/BlogsList"
+import setCookieOnReq from "@/utils/setCookieOnReq";
+import { getPostsApi } from "@/services/postServices";
 
-function BlogsPage() {
+async function BlogsPage() {
+    const storeCookies = cookies();
+    const options = setCookieOnReq(storeCookies);
+    const blogs = await getPostsApi(options);
+    // console.log(blogs);
     return (
-        <div>
-            <div className="flex items-center justify-between ">
-                <h1 className="font-bold text-3xl text-secondary-900">لیست بلاگ ها</h1>
-
-            </div>
-            <BlogsList />
+        <div className="mt-4">
+            <BlogsList blogs={blogs} />
         </div>
     )
 }
