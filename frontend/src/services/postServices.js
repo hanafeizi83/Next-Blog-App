@@ -1,7 +1,7 @@
 import http from "./httpServices";
 
-export async function getPostsApi(options) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list`, options);
+export async function getPostsApi(options,query) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list?${query}`, options);
     const { data } = await res.json();
     const { posts } = data || {};
     return posts;

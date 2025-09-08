@@ -1,13 +1,14 @@
-import { getPostsBySlugApi } from "@/services/postServices";
 import setCookieOnReq from "@/utils/setCookieOnReq";
 import { cookies } from "next/headers";
 import BlogsList from "../../_components/BlogsList";
+import queryString from "query-string";
 
-async function page({ params }) {
+async function page({ params, searchParams }) {
+    const query = queryString.stringify(searchParams);
     const { categorySlug } = params;
     const storeCookie = cookies();
     const options = setCookieOnReq(storeCookie)
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list?categorySlug=${categorySlug}`, options);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list?categorySlug=${categorySlug}&${query}`, options);
     const { data } = await res.json();
     const { posts: blogs } = data || {};
 

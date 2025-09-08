@@ -1,11 +1,8 @@
-import { getPostsApi } from '@/services/postServices'
 import { IoTimeOutline } from "react-icons/io5";
 import Image from 'next/image';
 import React from 'react'
 import Author from './Author';
 import BlogIntractions from './BlogIntractions';
-import setCookieOnReq from '@/utils/setCookieOnReq';
-import { cookies } from 'next/headers';
 
 async function BlogsList({blogs}) {
 
