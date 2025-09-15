@@ -1,10 +1,10 @@
-function Button({ children, variant='primary', className, onClick, ...rest }) {
-    const buttonType={
+function Button({ children, variant = 'primary', className, onClick, ...rest }) {
+    const buttonType = {
         primary: 'btn--primary',
-        secondary:'btn--secondary',
-        outline:'btn--outline',
-        danger:'btn--danger'
-
+        secondary: 'btn--secondary',
+        outline: 'btn--outline',
+        danger: 'btn--danger',
+        outline: 'btn-outline'
     }
     return (
         <button

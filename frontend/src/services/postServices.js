@@ -7,10 +7,10 @@ export async function getPostsApi(options,query) {
     return posts;
 }
 
-export async function getPostsBySlugApi(categorySlug, options) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/slug/${categorySlug}`, options);
-    const { data: { post } } = await res.json();
-    return post
+export async function getBlogBySlugApi(slug, options) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/slug/${slug}`, options);
+    const { data: { post:blog } } = await res.json();
+    return blog
 }
 
 export function likeBlogApi(blogId) {

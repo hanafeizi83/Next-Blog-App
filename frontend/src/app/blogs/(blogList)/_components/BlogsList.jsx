@@ -3,8 +3,9 @@ import Image from 'next/image';
 import React from 'react'
 import Author from './Author';
 import BlogIntractions from './BlogIntractions';
+import Link from "next/link";
 
-async function BlogsList({blogs}) {
+async function BlogsList({ blogs }) {
 
   return (
     <div className='grid grid-cols-12 gap-4'>
@@ -12,17 +13,21 @@ async function BlogsList({blogs}) {
         blogs && blogs.map(blog => {
           return <div key={blog._id} className='col-span-12 md:col-span-6 lg:col-span-4 w-full h-80 rounded-lg'>
             <div className='relative w-full h-full'>
+              <Link href={`/blogs/${blog.slug}`}>
+                <Image
+                  src={blog.coverImageUrl}
+                  alt={blog.title}
+                  fill
+                  className='rounded-lg object-cover'
+                />
+              </Link>
 
-              <Image
-                src={blog.coverImageUrl}
-                alt={blog.title}
-                fill
-                className='rounded-lg object-cover'
-              />
               {/* blog context */}
               <div className='bg-secondary-600 p-2 font-medium text-secondary-0 w-[calc(100%-.7rem)] rounded-lg m-1.5 h-25 z-50 absolute right-0 bottom-0 flex flex-col items-start justify-between'>
                 <span className='badge badge--secondary'>{blog.category.title}</span>
-                <h2>{blog.title}</h2>
+                <Link href={`/blogs/${blog.slug}`}>
+                  <h2 className="transition-all duration-300 hover:text-primary-600">{blog.title}</h2>
+                </Link>
                 {/* blog readign time and author */}
                 <div className='w-full flex items-center justify-between'>
                   <Author author={blog.author} />
@@ -34,7 +39,7 @@ async function BlogsList({blogs}) {
                   </div>
                 </div>
               </div>
-              <BlogIntractions blog={blog}/>
+              <BlogIntractions blog={blog} />
             </div>
 
           </div>
