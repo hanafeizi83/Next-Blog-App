@@ -75,7 +75,7 @@
     @apply bg-secondary-500 text-secondary-100 hover:bg-secondary-900
   }
 
-  .btn-outline{
+  .btn-outline {
     @apply border border-secondary-700 text-secondary-700 hover:bg-secondary-700 hover:text-secondary-0
   }
 
@@ -91,16 +91,16 @@
     @apply outline-none w-full h-full px-2 py-1 pt-6 pr-3 text-lg rounded-xl bg-secondary-200 focus:border box-border focus:border-primary-900
   }
 
-  .eyeIcon{
+  .eyeIcon {
     @apply size-9 absolute bottom-0 left-0 p-2 z-60 !cursor-pointer text-secondary-500
   }
 
-  .badge{
+  .badge {
     @apply rounded-full text-xs text-center py-0.5
   }
 
-  .badge--secondary{
-    @apply bg-secondary-400 px-4 
+  .badge--secondary {
+    @apply bg-secondary-400 px-4
   }
 
   @keyframes navlinkWidth {
@@ -111,5 +111,60 @@
     100% {
       width: 2rem;
     }
+  }
+}
+
+/* comment  indicator */
+
+.blog-comments .blog-comments__answer {
+  position: relative;
+}
+
+.blog-comments .blog-comments__answer::before {
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  right: -15px;
+  top: -13px;
+  width: 3px;
+  background-color: var(--color-secondary-200);
+}
+
+.blog-comments .blog-comments__answer .answer-item::before {
+  content: "";
+  display: block;
+  height: 3px;
+  position: relative;
+  right: -37px;
+  top: 21px;
+  width: 15px;
+  background-color: var(--color-secondary-200);
+  z-index: 10;
+}
+
+.blog-comments .blog-comments__answer .last-item:after {
+  content: "";
+  display: block;
+  height: calc(100% - 80px);
+  position: absolute;
+  right: -15px;
+  top: 76px;
+  width: 4px;
+  background-color: var(--color-secondary-200);
+  z-index: 30;
+}
+
+@media (max-width: 640px) {
+  .blog-comments .blog-comments__answer::before {
+    display: none;
+  }
+
+  .blog-comments .blog-comments__answer .answer-item::before {
+    width: 3px;
+    height: 100%;
+    right: 0px;
+    top: -13px;
+    position: absolute;
   }
 }

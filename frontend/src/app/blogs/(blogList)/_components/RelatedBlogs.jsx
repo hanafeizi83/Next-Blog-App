@@ -1,12 +1,9 @@
 import Image from "next/image";
-import Author from "./Author"
 import Button from "@/ui/Button";
 import AvatarUser from "@/ui/AvatarUser";
 import Link from "next/link";
 
 function RelatedBlogs({ blogs }) {
-    console.log(blogs);
-
     return (
         <div className="space-y-2 w-full">
             <h2 className="font-medium text-2xl">پست های مرتبط</h2>
@@ -15,7 +12,7 @@ function RelatedBlogs({ blogs }) {
             }
             {
                 blogs && blogs.map(blog => (
-                    <Link href={`/blogs/${blog.slug}`} key={blog._id} className="flex items-center">
+                    <Link href={`/blogs/${blog.slug}`} key={blog._id} className="flex items-center gap-x-1">
                         <Image
                             src={blog.coverImageUrl}
                             width={120}
