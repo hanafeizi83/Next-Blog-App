@@ -3,14 +3,16 @@ import AvatarUser from '@/ui/AvatarUser'
 import Modal from '@/ui/Modal';
 import React, { useState } from 'react'
 import { RiShareForwardLine } from "react-icons/ri";
+import AnswerCommentForm from './AnswerCommentForm';
 
-function Comment({ comment }) {
-    console.log(comment);
+function Comment({ comment, blogId }) {
     const [open, setOpen] = useState(false);
 
     return (
         <>
-        <Modal open={open} onClose={()=>setOpen(false)} title={`پاسخ به نظر `} description={comment.user.name}/>
+            <Modal open={open} onClose={() => setOpen(false)} title={`پاسخ به نظر `} description={comment.user.name}>
+                <AnswerCommentForm blogId={blogId} parentId={comment._id} onClose={() => setOpen(false)} />
+            </Modal>
             <AvatarUser
                 src={comment.user?.avatarUrl}
                 alt={comment.user.name}

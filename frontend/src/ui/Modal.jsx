@@ -9,8 +9,8 @@ function Modal({ open, onClose, title, children, description = "" }) {
     open &&
     createPortal(
       <div
-        className="backdrop-blur-sm fixed top-0 left-0
-           w-full h-screen bg-secondary-800/30 z-50"
+        className="backdrop-blur-sm fixed  top-0 left-0
+           w-full h-screen bg-secondary-800/30 z-80"
       >
         <div
           ref={ref}
@@ -28,7 +28,7 @@ function Modal({ open, onClose, title, children, description = "" }) {
                 {description}
               </p>
             </div>
-            <button onClick={onClose}>
+            <button onClick={onClose} className="cursor-pointer">
               <IoClose className="w-5 h-5 text-secondary-500" />
             </button>
           </div>

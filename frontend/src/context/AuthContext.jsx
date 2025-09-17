@@ -92,7 +92,7 @@ export default function AuthProvider({ children }) {
             const { message, user } = await signinApi(values);
             toast.success(message);
             dispatch({ type: 'signup', payload: user });
-            router.push('/profile');
+            router.push('/');
 
         } catch (error) {
             const errorMsg = error?.response?.data?.message;

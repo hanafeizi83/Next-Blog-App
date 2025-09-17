@@ -28,9 +28,9 @@ function Header() {
   const { user } = useAuth();
 
   return (
-    <div className="w-full bg-secondary-0 overflow-x-hidden fixed z-90 top-0">
+    <div className="w-full bg-secondary-0 overflow-x-hidden fixed z-60 top-0 ">
       <div className="container">
-        <div className="flex items-center justify-between py-2 w-full gap-x-4">
+        <div className="flex items-center justify-between py-2 w-full">
           <Image src={'/images/logo.png'}
             width={40}
             height={40}

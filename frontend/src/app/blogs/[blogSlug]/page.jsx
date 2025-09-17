@@ -11,12 +11,11 @@ async function page({ params }) {
     const { blogSlug } = params;
     const blog = await getBlogBySlugApi(blogSlug);
     const dateOfCreate = new Date(blog.createdAt).toLocaleDateString('fa-IR', { year: 'numeric', month: 'long', day: 'numeric' });
-    // console.log(blog);
 
     return (
         <>
 
-            <div className="grid grid-cols-12 gap-4 !mt-24">
+            <div className="grid grid-cols-12 gap-4 !mt-24 mb-5">
                 <div className="col-span-12 lg:col-span-9">
                     <div className='relative w-full h-90 rounded-lg overflow-hidden '>
                         <Image
