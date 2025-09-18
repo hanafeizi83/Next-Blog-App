@@ -1,6 +1,6 @@
 import http from "./httpServices";
 
-export async function getPostsApi(options,query) {
+export async function getPostsApi(options, query) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list?${query}`, options);
     const { data } = await res.json();
     const { posts } = data || {};
@@ -9,7 +9,8 @@ export async function getPostsApi(options,query) {
 
 export async function getBlogBySlugApi(slug, options) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/slug/${slug}`, options);
-    const { data: { post:blog } } = await res.json();
+    const { data } = await res.json();
+    const { post: blog } = data || {}
     return blog
 }
 

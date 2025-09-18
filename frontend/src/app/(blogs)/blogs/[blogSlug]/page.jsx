@@ -5,13 +5,15 @@ import { CiCalendarDate } from "react-icons/ci";
 import { IoTimeOutline } from "react-icons/io5";
 import RelatedBlogs from "../(blogList)/_components/RelatedBlogs";
 import BlogComment from "../(blogList)/_components/comment/BlogComment";
+import NotFound from "app/not-found";
 
 
 async function page({ params }) {
     const { blogSlug } = params;
     const blog = await getBlogBySlugApi(blogSlug);
-    const dateOfCreate = new Date(blog.createdAt).toLocaleDateString('fa-IR', { year: 'numeric', month: 'long', day: 'numeric' });
+    const dateOfCreate = new Date(blog?.createdAt).toLocaleDateString('fa-IR', { year: 'numeric', month: 'long', day: 'numeric' });
 
+    if(!blog) return NotFound();
     return (
         <>
 

@@ -6,7 +6,7 @@ async function CategoryList() {
     const categories = await getCategoriesApi();
 
     return (
-        <div className="space-y-2 mt-6 fixed w-[14%]">
+        <div className="space-y-2 sticky mt-6 w-full">
             <CategoryListItem icon={faList} title={'همه'} slug={``} />
 
             {
