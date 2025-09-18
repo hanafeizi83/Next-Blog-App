@@ -9,6 +9,7 @@ import * as yup from 'yup';
 import { signupApi } from "@/services/authServices";
 import toast from "react-hot-toast";
 import { useAuth } from "context/AuthContext";
+import Loading from "@/ui/Loading";
 
 const schema = yup.object({
   name: yup.string().required('نام کاربری الزامی است'),
@@ -17,7 +18,7 @@ const schema = yup.object({
 })
 
 function Signup() {
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors, isLoading } } = useForm({
     resolver: yupResolver(schema)
   });
   const { signup } = useAuth();
@@ -52,7 +53,10 @@ function Signup() {
               errors={errors}
             />
             <Button className='w-full rounded-lg !py-2.5'>
-              ثبت نام
+              {
+                isLoading ? <Loading /> : 'ثبت نام'
+              }
+
             </Button>
             <p className="space-x-2 text-secondary-500 flex items-center">
               حساب کاربری دارید ؟

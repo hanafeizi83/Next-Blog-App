@@ -1,3 +1,4 @@
+
 import { IoTimeOutline } from "react-icons/io5";
 import Image from 'next/image';
 import React from 'react'
@@ -6,12 +7,14 @@ import BlogIntractions from './BlogIntractions';
 import Link from "next/link";
 
 async function BlogsList({ blogs }) {
-
   return (
     <div className='grid grid-cols-12 gap-4'>
       {
         blogs && blogs.map(blog => {
-          return <div key={blog._id} className='col-span-12 md:col-span-6 lg:col-span-4 w-full h-80 rounded-lg'>
+          return <div
+            className='col-span-12 md:col-span-6 lg:col-span-4 w-full h-80 rounded-lg'
+            key={blog._id}
+          >
             <div className='relative w-full h-full'>
               <Link href={`/blogs/${blog.slug}`}>
                 <Image

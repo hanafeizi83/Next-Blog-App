@@ -1,5 +1,6 @@
 'use client'
 import Button from '@/ui/Button'
+import Loading from '@/ui/Loading'
 import TextArea from '@/ui/TextArea'
 import { addComment } from 'lib/action'
 import React, { useActionState, useEffect } from 'react'
@@ -9,9 +10,9 @@ import toast from 'react-hot-toast'
 const initialState = {
     message: '',
     error: ''
-} 
+}
 
-function AnswerCommentForm({ blogId, parentId,onClose }) {
+function AnswerCommentForm({ blogId, parentId, onClose }) {
     const { pending } = useFormStatus();
     const [state, formAction] = useActionState(addComment, initialState);
 
@@ -25,14 +26,17 @@ function AnswerCommentForm({ blogId, parentId,onClose }) {
             toast.error(state?.error)
         }
     }, [state]);
-    
+
     return (
         <form className='space-y-2' action={async (formData) => {
             await formAction({ formData, blogId, parentId })
         }}>
             <TextArea name='text' placeholder={'نظر خود را وارد کنید'} />
-            <Button variant='primary' className='w-full rounded-lg text-secondary-0'>
-                ثبت نظر
+            <Button variant='primary' className='w-full rounded-lg text-secondary-0 flex items-center justify-center'>
+                {
+                    pending ? <Loading /> : 'ثبت نظر'
+                }
+
             </Button>
 
         </form>

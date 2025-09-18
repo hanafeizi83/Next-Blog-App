@@ -6,6 +6,7 @@ import React, { useActionState, useEffect, useState } from 'react'
 import { addComment } from 'lib/action';
 import { useFormStatus } from 'react-dom';
 import toast from 'react-hot-toast';
+import Loading from '@/ui/Loading';
 
 const initialState = {
     message: '',
@@ -51,7 +52,10 @@ function AddCommentForm({ blogId }) {
                         // type='submit'
                         // onClick={(e) => e.preventDefault()}
                         className='w-11 h-full text-secondary-0 rounded-full bg-primary-800 flex items-center justify-center cursor-pointer'>
-                        <BiSolidSend className='w-6 h-6 rotate-180' />
+                            {
+                                pending ? <Loading size='20'/> :<BiSolidSend className='w-6 h-6 rotate-180' />
+                            }
+                        
                     </button>
                 </div>
             </form>
