@@ -28,7 +28,7 @@ function Header() {
   const { user } = useAuth();
 
   return (
-    <div className="w-full bg-secondary-0 overflow-x-hidden fixed z-60 top-0 ">
+    <div className="w-full bg-primary-50 overflow-x-hidden fixed z-60 top-0 ">
       <div className="container">
         <div className="flex items-center justify-between py-2 w-full">
           <Image src={'/images/logo.png'}
@@ -43,7 +43,7 @@ function Header() {
             className={`
             lg:w-full flex items-center justify-between lg:flex-row lg:shadow-none lg:p-0 lg:static lg:h-auto lg:z-0
             transition-all duration-300 fixed
-            bg-secondary-0 shadow-md shadow-primary-200 flex-col h-screen  z-50 w-40 top-0 py-4 px-2
+            bg-primary-50 shadow-md shadow-primary-200 flex-col h-screen  z-50 w-40 top-0 py-4 px-2
             ${isShow ? 'left-0' : '-left-50'}
             `}>
 

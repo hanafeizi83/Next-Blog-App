@@ -36,6 +36,10 @@
   --animate-navlink: .3s navlinkWidth
 }
 
+body {
+  background-color: var(--color-primary-50);
+}
+
 * {
   font-family: var(--font-kalemeh);
 }
@@ -101,6 +105,14 @@
 
   .badge--secondary {
     @apply bg-secondary-400 px-4
+  }
+
+  .iconSideBar {
+    @apply w-6 h-6
+  }
+
+  .activeSideBarLike {
+    @apply !text-secondary-900 before:absolute before:content-[''] before:w-1  before:h-full before:text-center before:!rounded-lg before:top-0 before:-right-3.5 before:bg-secondary-900
   }
 
   @keyframes navlinkWidth {
