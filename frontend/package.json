@@ -19,6 +19,7 @@
     "classnames": "^2.5.1",
     "framer-motion": "^12.23.13",
     "heroicons": "^2.2.0",
+    "keen-slider": "^6.8.6",
     "next": "15.5.2",
     "query-string": "^9.2.2",
     "react": "19.1.0",

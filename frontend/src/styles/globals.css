@@ -1,5 +1,7 @@
+/* ✅ Tailwind v4 imports */
 @import "tailwindcss";
 
+/* ✅ Theme variables */
 @theme {
   --background-app-rgb: rgb(249, 250, 251);
   --color-primary-900: rgb(74, 109, 255);
@@ -33,11 +35,12 @@
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
   --font-weight-black: 900;
-  --animate-navlink: .3s navlinkWidth
+  --animate-navlink: 0.3s navlinkWidth;
 }
 
+/* ✅ Global styles */
 body {
-  background-color: var(--color-primary-50);
+  background-color: rgb(241, 244, 249);
 }
 
 * {
@@ -48,86 +51,88 @@ body {
   width: 90%;
   margin: 0 auto;
 
-  @media (width >=40rem) {
+  @media (width >= 40rem) {
     max-width: 40rem;
   }
 
-  @media (width >=48rem) {
+  @media (width >= 48rem) {
     max-width: 48rem;
   }
 
-  @media (width >=64rem) {
+  @media (width >= 64rem) {
     max-width: 64rem;
   }
 
-  @media (width >=80rem) {
+  @media (width >= 80rem) {
     max-width: 80rem;
   }
 
-  @media (width >=96rem) {
+  @media (width >= 96rem) {
     max-width: 96rem;
   }
 }
 
+/* ✅ Components */
 @layer components {
-
   .btn--primary {
-    @apply bg-primary-800 text-primary-100 hover:bg-primary-900
+    @apply bg-primary-800 text-primary-100 hover:bg-primary-900;
   }
 
   .btn--secondary {
-    @apply bg-secondary-500 text-secondary-100 hover:bg-secondary-900
+    @apply bg-secondary-500 text-secondary-100 hover:bg-secondary-900;
   }
 
   .btn-outline {
-    @apply border border-secondary-700 text-secondary-700 hover:bg-secondary-700 hover:text-secondary-0
+    @apply border border-secondary-700 text-secondary-700 hover:bg-secondary-700 hover:text-secondary-0;
   }
 
   .btn--danger {
-    @apply border border-rose-600 text-rose-500
+    @apply border border-rose-600 text-rose-500;
   }
 
   .btn {
-    @apply !cursor-pointer text-lg
+    @apply !cursor-pointer text-lg;
   }
 
   .textFeiled {
-    @apply outline-none w-full h-full px-2 py-1 pt-6 pr-3 text-lg rounded-xl bg-secondary-200 focus:border box-border focus:border-primary-900
+    @apply outline-none w-full h-full px-2 py-1 pt-6 pr-3 text-lg rounded-xl bg-secondary-200 focus:border box-border focus:border-primary-900;
   }
 
   .eyeIcon {
-    @apply size-9 absolute bottom-0 left-0 p-2 z-60 !cursor-pointer text-secondary-500
+    @apply size-9 absolute bottom-0 left-0 p-2 z-60 !cursor-pointer text-secondary-500;
   }
 
   .badge {
-    @apply rounded-full text-xs text-center py-0.5
+    @apply rounded-full text-xs text-center py-0.5;
   }
 
   .badge--secondary {
-    @apply bg-secondary-400 px-4
+    @apply bg-secondary-400 px-4;
+  }
+
+  .badge--success {
+    @apply bg-green-200 text-green-600 px-4;
   }
 
   .iconSideBar {
-    @apply w-6 h-6
+    @apply lg:w-6 lg:h-6 w-8 h-8;
   }
 
   .activeSideBarLike {
-    @apply !text-secondary-900 before:absolute before:content-[''] before:w-1  before:h-full before:text-center before:!rounded-lg before:top-0 before:-right-3.5 before:bg-secondary-900
+    @apply !text-secondary-900 before:absolute before:content-[''] before:w-1 before:h-full before:text-center before:!rounded-lg before:top-0 lg:before:!-right-3.5 before:right-[-1.7rem] before:bg-secondary-900;
   }
 
   @keyframes navlinkWidth {
     0% {
       width: 0;
     }
-
     100% {
       width: 2rem;
     }
   }
 }
 
-/* comment  indicator */
-
+/* ✅ Comment indicator */
 .blog-comments .blog-comments__answer {
   position: relative;
 }
@@ -179,4 +184,30 @@ body {
     top: -13px;
     position: absolute;
   }
+}
+
+/* ✅ Table */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table td,
+table th {
+  border-bottom: 1px solid rgb(var(--color-secondary-200));
+  text-align: center;
+  white-space: nowrap;
+}
+
+table th {
+  padding: 0.6rem 1rem;
+  color: rgb(var(--color-secondary-600));
+  font-size: 0.9rem;
+}
+
+table td {
+  font-size: 0.85rem;
+  padding: 0.5rem 0.5rem;
+  color: rgb(var(--color-secondary-600));
 }

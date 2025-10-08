@@ -36,7 +36,7 @@ function Header() {
             height={40}
             alt="image"
           />
-          <Search className='lg:hidden w-[50%]' />
+          <Search containerClass='lg:hidden w-[50%]' />
 
           <div
             ref={ref}
@@ -48,7 +48,7 @@ function Header() {
             `}>
 
             <Navlink data={navlinkes} />
-            <Search className='lg:flex hidden' />
+            <Search containerClass='lg:flex hidden' />
             {
               user ?
                 <div className="grid lg:grid-cols-[3rem_1fr] grid-rows-2 lg:grid-rows-1 gap-x-2 items-center">
