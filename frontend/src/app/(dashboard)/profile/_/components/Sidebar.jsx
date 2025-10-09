@@ -20,7 +20,7 @@ const navLinksData = [
   {
     id: 2,
     title: 'پست ها',
-    slug: '/posts',
+    slug: '/blogs',
     icon: <IoDocumentText className='iconSideBar' />,
     tooltip: 'پست ها'
   },

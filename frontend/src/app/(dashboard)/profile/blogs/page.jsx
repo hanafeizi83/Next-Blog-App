@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PostsPage() {
+function BlogsPage() {
   return (
     <div>
       posts
@@ -8,4 +8,4 @@ function PostsPage() {
   )
 }
 
-export default PostsPage
+export default BlogsPage
