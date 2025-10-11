@@ -1,13 +1,14 @@
 import '@/styles/globals.css'
 
 export const metadata = {
-  title: "Auth",
-  description: "Auth",
+  title: {
+    absolute: "ورود و ثبت نام"
+  }
 };
 
 export default function RootLayout({ children }) {
   return (
-    <div>
+    <div className=''>
       {children}
     </div>
   )

@@ -6,8 +6,6 @@ import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup';
-import toast from "react-hot-toast";
-import { signinApi } from "@/services/authServices"
 import { useAuth } from "context/AuthContext";
 import Loading from "@/ui/Loading";
 

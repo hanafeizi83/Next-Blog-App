@@ -1,7 +1,9 @@
 import '@/styles/globals.css'
 import Header from '@/components/Header'
 import React from 'react'
-
+export const metadata = {
+  title:'بلاگ ها'
+}
 export default function RootLayout({ children }) {
   return (
     <>

@@ -28,22 +28,29 @@ function Header() {
   const { user } = useAuth();
 
   return (
-    <div className="w-full bg-primary-50 overflow-x-hidden fixed z-60 top-0 ">
+    <div className="w-full bg-background overflow-x-hidden fixed z-60 top-0 ">
       <div className="container">
         <div className="flex items-center justify-between py-2 w-full">
-          <Image src={'/images/logo.png'}
-            width={40}
-            height={40}
-            alt="image"
-          />
-          <Search containerClass='lg:hidden w-[50%]' />
+          <Link href={'/'} className="flex items-center lg:w-50 w-40 gap-2 lg:ml-4 ml-0">
+            <Image src={'/images/logo.png'}
+              width={40}
+              height={40}
+              alt="image"
+            />
+            <div className="flex flex-col">
+              <h2 className="font-bold text-lg">بلاگینو</h2>
+              <span className="text-xs text-secondary-600">مرجع بلاگ های رسمی</span>
+            </div>
+          </Link>
+
+          <Search containerClass='lg:hidden' />
 
           <div
             ref={ref}
             className={`
             lg:w-full flex items-center justify-between lg:flex-row lg:shadow-none lg:p-0 lg:static lg:h-auto lg:z-0
             transition-all duration-300 fixed
-            bg-primary-50 shadow-md shadow-primary-200 flex-col h-screen  z-50 w-40 top-0 py-4 px-2
+            bg-transparent shadow-md shadow-primary-200 flex-col h-screen  z-50 w-40 top-0 py-4 px-2
             ${isShow ? 'left-0' : '-left-50'}
             `}>
 
