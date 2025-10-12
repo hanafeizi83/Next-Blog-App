@@ -32,7 +32,7 @@ function AnswerCommentForm({ blogId, parentId, onClose }) {
             await formAction({ formData, blogId, parentId })
         }}>
             <TextArea name='text' placeholder={'نظر خود را وارد کنید'} />
-            <Button variant='primary' className='w-full rounded-lg text-secondary-0 flex items-center justify-center'>
+            <Button variant='primary' className='w-full text-secondary-0 flex items-center justify-center'>
                 {
                     pending ? <Loading /> : 'ثبت نظر'
                 }

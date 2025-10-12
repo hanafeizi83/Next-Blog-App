@@ -27,7 +27,7 @@ function RelatedBlogs({ blogs }) {
                                 alt={blog.slug}
                                 className={'h-8 w-8 '}
                             />
-                            <Button variant="secondary" className='rounded-xl !py-1 w-full'>
+                            <Button variant="secondary" className='!rounded-xl !py-1 w-full'>
                                 مشاهده
                             </Button>
                         </div>

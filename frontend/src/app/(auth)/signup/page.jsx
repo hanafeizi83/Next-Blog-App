@@ -50,7 +50,7 @@ function Signup() {
               label='رمز عبور'
               errors={errors}
             />
-            <Button className='w-full rounded-lg !py-2.5'>
+            <Button className='w-full !py-2.5'>
               {
                 isLoading ? <Loading /> : 'ثبت نام'
               }

@@ -77,7 +77,7 @@ function Header() {
                 </div>
 
                 :
-                <Button className={'text-secondary-0 rounded-lg w-full lg:w-auto'}>
+                <Button className={'text-secondary-0 w-full lg:w-auto'}>
                   <Link href='/signin'>ورود</Link>
                 </Button>
             }

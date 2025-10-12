@@ -8,7 +8,7 @@ function Button({ children, variant = 'primary', className, onClick, ...rest }) 
     }
     return (
         <button
-            className={`btn transition duration-300 py-2 px-4 ${buttonType[variant]} ${className}`}
+            className={`btn transition rounded-lg duration-300 py-2 px-4 ${buttonType[variant]} ${className}`}
             onClick={onClick}
             {...rest}
         >
