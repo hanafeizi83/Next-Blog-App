@@ -8,16 +8,39 @@ import queryString from 'query-string';
 import { cookies } from 'next/headers';
 import setCookieOnReq from '@/utils/setCookieOnReq';
 import FilterSelectBox from '@/ui/FilterSelectBox';
+import BreadCrumbs from '@/ui/BreadCrumbs';
 
 async function BlogsPage({ searchParams }) {
   const query = queryString.stringify(searchParams);
   const storeCookie = cookies();
   const options = setCookieOnReq(storeCookie)
   const { posts, totalPages } = await getPostsApi(options, query);
+  const breadCrumbs = [
+    {
+      id: 1,
+      title: 'خانه',
+      href: '/'
+    },
+    {
+      id: 1,
+      title: 'داشبورد',
+      href: '/profile'
+    },
+    {
+      id: 1,
+      title: 'بلاگ ها',
+      href: '/profile/blogs',
+      active: true
+    }
 
+  ]
   return (
     <div className=''>
+      <div>
+        <BreadCrumbs breadCrumbs={breadCrumbs} />
+      </div>
       <div className='mb-2 flex items-center justify-between'>
+
         <h2 className='font-medium text-xl'>لیست بلاگ ها</h2>
         <div className='flex items-center gap-4'>
           <FilterSelectBox />
