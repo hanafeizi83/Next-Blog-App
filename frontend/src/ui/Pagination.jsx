@@ -67,7 +67,7 @@ function PaginationArrow({ href, direction, isDisable }) {
   const className = classNames(
     `w-9 h-9 rounded-full font-medium  border border-secondary-400 text-secondary-400 flex items-center justify-center transition-all duration-300 cursor-pointer`, {
     'hover:!text-secondary-0 hover:bg-primary-800 hover:border-primary-800': !isDisable,
-    'bg-secondary-200': isDisable
+    'bg-secondary-200 !cursor-not-allowed': isDisable
   }
 
   )
