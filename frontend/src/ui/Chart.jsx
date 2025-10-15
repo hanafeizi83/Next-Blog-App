@@ -5,9 +5,6 @@ import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts';
 const COLORS = ["#e36954", "#92a7ff"];
 export default function Chart() {
   const { user } = useAuth();
-  console.log(user);
-  console.log(user?.likedPosts);
-  console.log(user?.bookmarkedPosts);
 
   const likes = user?.likedPosts?.length ?? 0;
   const saves = user?.bookmarkedPosts?.length ?? 0;

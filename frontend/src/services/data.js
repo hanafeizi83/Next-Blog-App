@@ -17,7 +17,7 @@ export default async function getCartData() {
             getAllCommentsApi()
         ]);
 
-        const numOfPosts = data[0].length;
+        const numOfPosts = data[0].posts.length;
         const numOfCategories = data[1].length;
         const numOfUsers = data[2].users.length;
         const numOfComments = data[3].commentsCount;

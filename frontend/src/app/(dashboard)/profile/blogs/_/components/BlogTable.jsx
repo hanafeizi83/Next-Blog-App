@@ -1,17 +1,8 @@
 import React from 'react'
 import Tabel from '@/ui/Tabel'
-import { getPostsApi } from '@/services/postServices'
 import BlogsTableRow from './BlogsTableRow';
-import { cookies } from 'next/headers';
-import setCookieOnReq from '@/utils/setCookieOnReq';
 
-async function BlogTable() {
-    const storeCookie = cookies();
-    const options = setCookieOnReq(storeCookie)
-    const posts = await getPostsApi(options);
-
-    console.log(posts);
-    
+async function BlogTable({posts}) {
     return (
         <Tabel>
             <Tabel.Header>

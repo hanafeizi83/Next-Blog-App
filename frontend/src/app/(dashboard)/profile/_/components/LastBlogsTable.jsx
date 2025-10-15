@@ -8,7 +8,7 @@ import { getPostsApi } from '@/services/postServices';
 async function LastBlogsTable() {
     const storeCookie = cookies();
     const options = setCookieOnReq(storeCookie)
-    const posts = await getPostsApi(options);
+    const {posts} = await getPostsApi(options);
     return (
         <Tabel>
             <Tabel.Header>

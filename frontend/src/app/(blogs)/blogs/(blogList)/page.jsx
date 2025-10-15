@@ -8,13 +8,13 @@ async function BlogsPage({ searchParams }) {
     const query = queryString.stringify(searchParams);
     const storeCookies = cookies();
     const options = setCookieOnReq(storeCookies);
-    const blogs = await getPostsApi(options, query);
+    const { posts: blogs } = await getPostsApi(options, query);
 
 
 
     return (
         <div className="mt-4">
-                <BlogsList blogs={blogs} />
+            <BlogsList blogs={blogs} />
         </div>
     )
 }

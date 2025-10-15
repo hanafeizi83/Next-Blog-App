@@ -2,10 +2,20 @@ import React from 'react'
 import BlogTable from './_/components/BlogTable'
 import Button from '@/ui/Button'
 import { GoPlus } from "react-icons/go";
+import Pagination from '@/ui/Pagination';
+import { getPostsApi } from '@/services/postServices';
+import queryString from 'query-string';
+import { cookies } from 'next/headers';
+import setCookieOnReq from '@/utils/setCookieOnReq';
 
-function BlogsPage() {
+async function BlogsPage({ searchParams }) {
+  const query = queryString.stringify(searchParams);
+  const storeCookie = cookies();
+  const options = setCookieOnReq(storeCookie)
+  const { posts, totalPages } = await getPostsApi(options, query);
+
   return (
-    <div className='mt-4'>
+    <div className=''>
       <div className='mb-2 flex items-center justify-between'>
         <h2 className='font-medium text-xl'>لیست بلاگ ها</h2>
         <Button variant='primary' className='flex items-center gap-2 text-secondary-0'>
@@ -14,7 +24,10 @@ function BlogsPage() {
         </Button>
       </div>
       <div className="bg-secondary-0 rounded-3xl">
-        <BlogTable />
+        <BlogTable posts={posts} />
+      </div>
+      <div className="w-full flex items-center justify-center py-2">
+        <Pagination totalPages={totalPages} />
       </div>
     </div>
   )
