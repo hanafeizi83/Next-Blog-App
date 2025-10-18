@@ -1,10 +1,10 @@
 'use client';
 import React, { useState } from 'react'
 
-function TextFeiled({ label, type = 'text', className, register, name, dir = 'rtl', errors }) {
+function TextFeiled({ label, type = 'text', containerClass, className, register, name, dir = 'rtl', errors }) {
     const [isPass, setIsPass] = useState(true)
     return (
-        <div>
+        <div className={`w-full ${containerClass}`}>
             <div className=" relative flex flex-col">
                 <label htmlFor={name} className="text-secondary-400 absolute top-2 right-3 font-medium text-sm">
                     {label}

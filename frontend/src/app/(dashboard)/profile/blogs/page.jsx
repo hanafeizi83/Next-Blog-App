@@ -1,6 +1,5 @@
 import React from 'react'
 import BlogTable from './_/components/BlogTable'
-import Button from '@/ui/Button'
 import { GoPlus } from "react-icons/go";
 import Pagination from '@/ui/Pagination';
 import { getPostsApi } from '@/services/postServices';
@@ -9,6 +8,7 @@ import { cookies } from 'next/headers';
 import setCookieOnReq from '@/utils/setCookieOnReq';
 import FilterSelectBox from '@/ui/FilterSelectBox';
 import BreadCrumbs from '@/ui/BreadCrumbs';
+import Link from 'next/link';
 
 async function BlogsPage({ searchParams }) {
   const query = queryString.stringify(searchParams);
@@ -22,12 +22,12 @@ async function BlogsPage({ searchParams }) {
       href: '/'
     },
     {
-      id: 1,
+      id: 2,
       title: 'داشبورد',
       href: '/profile'
     },
     {
-      id: 1,
+      id: 3,
       title: 'بلاگ ها',
       href: '/profile/blogs',
       active: true
@@ -44,10 +44,13 @@ async function BlogsPage({ searchParams }) {
         <h2 className='font-medium text-xl'>لیست بلاگ ها</h2>
         <div className='flex items-center gap-4'>
           <FilterSelectBox />
-          <Button variant='primary' className='flex items-center gap-2 text-secondary-0'>
+          <Link
+          href={'/profile/blogs/create'}
+          className='flex items-center gap-2 text-secondary-0 btn btn--primary rounded-lg duration-300 py-2 px-4'
+          >
             افزودن بلاگ
             <GoPlus className='w-7 h-7' />
-          </Button>
+          </Link>
         </div>
       </div>
       <div className="bg-secondary-0 rounded-3xl">
