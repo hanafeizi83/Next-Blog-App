@@ -1,6 +1,7 @@
 import { FiMoon } from "react-icons/fi";
 import { MdOutlineNotificationsNone } from "react-icons/md";
 import Search from "@/ui/Search";
+import DarkmodeBtn from "@/ui/DarkmodeBtn";
 
 
 
@@ -18,9 +19,7 @@ function Header() {
         <div className="bg-secondary-0 cursor-pointer rounded-xl p-2 flex items-center justify-center">
           <MdOutlineNotificationsNone className="w-6 h-6 text-secondary-800" />
         </div>
-        <div className="bg-secondary-0 cursor-pointer rounded-xl p-2 flex items-center justify-center">
-          <FiMoon className="w-6 h-6 text-secondary-800" />
-        </div>
+        <DarkmodeBtn />
       </div>
     </div>
   )

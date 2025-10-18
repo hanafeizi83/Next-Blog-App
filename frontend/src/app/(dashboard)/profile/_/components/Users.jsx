@@ -12,7 +12,7 @@ async function Users() {
 
   return (
     <div className='col-span-5 row-span-1 md:col-span-2 space-y-1 relative'>
-      <h2 className='font-medium text-xl'>کاربران</h2>
+      <h2 className='font-medium text-xl text-secondary-800'>کاربران</h2>
       <Suspense fallback={<Loading />}>
         <UsersSlider users={users} />
       </Suspense>

@@ -2,27 +2,29 @@
 import AvatarUser from '@/ui/AvatarUser';
 import Slider from '@/ui/Silder';
 import truncateText from '@/utils/trancateText';
+import { useDarkmode } from 'context/DarkModeContext';
 import Link from 'next/link';
 import React, { useRef } from 'react'
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
 function UsersSlider({ users }) {
-    const sliderRef = useRef(null)
+    const sliderRef = useRef(null);
+    const {isDarkmode}=useDarkmode()
     return (
         <>
             {/* Button */}
             <div className="flex items-center gap-2">
                 <button
                     onClick={() => sliderRef.current?.prev()}
-                    className="absolute left-0  top-[.5rem] -translate-y-[40%] bg-secondary-0 shadow rounded-xl p-2 cursor-pointer hover:bg-gray-100 z-10"
+                    className={`absolute left-0  top-[.5rem] text-secondary-800 -translate-y-[40%] bg-secondary-0 shadow rounded-xl p-2 cursor-pointer  ${isDarkmode ? 'hover:bg-gray-800':'hover:bg-gray-100'}  z-10`}
                 >
-                    <IoIosArrowBack size={20} />
+                    <IoIosArrowBack size={20}  />
                 </button>
                 < button
                     onClick={() => sliderRef.current?.next()
                     }
-                    className="absolute left-10  top-[.5rem] -translate-y-[40%] bg-secondary-0 shadow rounded-xl p-2 cursor-pointer hover:bg-gray-100 z-10"
+                    className={`absolute left-10  top-[.5rem] text-secondary-800 -translate-y-[40%] bg-secondary-0 shadow rounded-xl p-2 cursor-pointer ${isDarkmode ? 'hover:bg-gray-800':'hover:bg-gray-100'}  z-10`}
                 >
                     <IoIosArrowForward size={20} />
                 </button >
@@ -44,7 +46,7 @@ function UsersSlider({ users }) {
                                 />
                             </Link>
 
-                            <h2 className="font-medium mt-1 text-xs">{truncateText(user.name, 5)}</h2>
+                            <h2 className="font-medium mt-1 text-secondary-800 text-xs">{truncateText(user.name, 5)}</h2>
                         </div>
                     ))}
                 </Slider>

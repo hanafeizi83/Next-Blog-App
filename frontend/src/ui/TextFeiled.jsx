@@ -16,7 +16,7 @@ function TextFeiled({ label, type = 'text', containerClass, className, register,
                     type={
                         name === 'password' ? isPass ? 'password' : 'text' : type
                     }
-                    className={`textFeiled ${className}`}
+                    className={`textFeiled text-secondary-800 ${className}`}
                     dir={dir}
                 />
                 {

@@ -11,7 +11,7 @@ function SideBarUSerImage() {
                 <AvatarUser src={user?.avatarUrl} alt='imageUser' className={'lg:w-22 lg:h-22  w-16 h-16'} />
             </div>
             <div className='flex flex-col items-center'>
-                <h2 className='font-medium lg:text-lg text-sm flex lg:flex-row flex-col items-center gap-1'>
+                <h2 className='font-medium text-secondary-800 lg:text-lg text-sm flex lg:flex-row flex-col items-center gap-1'>
                     <span>سلام</span>
                     <span>{user?.name}</span>
                     <span className='hidden lg:flex'>عزیز</span>

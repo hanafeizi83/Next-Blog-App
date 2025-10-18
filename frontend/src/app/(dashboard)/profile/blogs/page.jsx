@@ -41,7 +41,7 @@ async function BlogsPage({ searchParams }) {
       </div>
       <div className='mb-2 flex items-center justify-between'>
 
-        <h2 className='font-medium text-xl'>لیست بلاگ ها</h2>
+        <h2 className='font-medium text-xl text-secondary-800'>لیست بلاگ ها</h2>
         <div className='flex items-center gap-4'>
           <FilterSelectBox />
           <Link

@@ -4,7 +4,7 @@
 /* ✅ Theme variables */
 @theme {
   --color-background:rgb(241, 244, 249);
-  --background-app-rgb: rgb(249, 250, 251);
+  --color-background-app-rgb: rgb(249, 250, 251);
   --color-primary-900: rgb(74, 109, 255);
   --color-primary-800: rgb(92, 124, 255);
   --color-primary-700: rgb(110, 138, 255);
@@ -38,10 +38,54 @@
   --font-weight-black: 900;
   --animate-navlink: 0.3s navlinkWidth;
 }
-
+@layer base {
+  :root {
+    &,
+    &.light-mode {
+      --color-background-app-rgb: rgb(241, 244, 249);
+      --color-primary-900: rgb(74, 109, 255);
+      --color-primary-800: rgb(92, 124, 255);
+      --color-primary-700: rgb(110, 138, 255);
+      --color-primary-600: rgb(128, 153, 255);
+      --color-primary-500: rgb(146, 167, 255);
+      --color-primary-400: rgb(164, 182, 255);
+      --color-primary-300: rgb(183, 197, 255);
+      --color-primary-200: rgb(201, 211, 255);
+      --color-primary-100: rgb(219, 226, 255);
+      --color-primary-50: rgb(228, 233, 255);
+      --color-secondary-900: rgb(17, 24, 39);
+      --color-secondary-800: rgb(31, 41, 55);
+      --color-secondary-700: rgb(55, 65, 81);
+      --color-secondary-600: rgb(75, 85, 99);
+      --color-secondary-500: rgb(107, 114, 128);
+      --color-secondary-400: rgb(156, 163, 175);
+      --color-secondary-300: rgb(209, 213, 219);
+      --color-secondary-200: rgb(229, 231, 235);
+      --color-secondary-100: rgb(243, 244, 246);
+      --color-secondary-50: rgb(249, 250, 251);
+      --color-secondary-0: rgb(255, 255, 255);
+      --color-error: rgb(255, 71, 87);
+    }
+    &.dark-mode {
+      --color-background-app-rgb: rgb(40, 46, 58);
+      --color-secondary-900: rgb(249, 250, 251);
+      --color-secondary-800: rgb(243, 244, 246);
+      --color-secondary-700: rgb(229, 231, 235);
+      --color-secondary-600: rgb(209, 213, 219);
+      --color-secondary-500: rgb(156, 163, 175);
+      --color-secondary-400: rgb(107, 114, 128);
+      --color-secondary-300: rgb(75, 85, 99);
+      --color-secondary-200: rgb(55, 65, 81);
+      --color-secondary-100: rgb(31, 41, 55);
+      --color-secondary-50: rgb(17, 24, 39);
+      --color-secondary-0: rgb(24, 33, 47);
+      --backdrop-color: rgb(0, 0, 0);
+    }
+  }
+}
 /* ✅ Global styles */
 body {
-  background-color: rgb(241, 244, 249);
+  background-color: var(--color-background-app-rgb);
 }
 
 * {
@@ -203,12 +247,12 @@ table  th {
 
 table th {
   padding: 0.6rem 1rem;
-  color: rgb(var(--color-secondary-600));
+  color: var(--color-secondary-600);
   font-size: 0.9rem;
 }
 
 table td {
   font-size: 0.85rem;
   padding: 0.5rem 0.5rem;
-  color: rgb(var(--color-secondary-600));
+  color: var(--color-secondary-600);
 }

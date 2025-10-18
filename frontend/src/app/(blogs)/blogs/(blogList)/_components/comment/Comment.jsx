@@ -23,7 +23,7 @@ function Comment({ comment, blogId }) {
                     <h2 className='font-medium text-secondary-800'>{comment.user?.name}</h2>
                     <span className='text-sm text-secondary-500'>{comment.createdAt}</span>
                 </div>
-                <p className='font-medium'>{comment.content.text}</p>
+                <p className='font-medium text-secondary-800'>{comment.content.text}</p>
                 {
                     comment.openToComment && <button
                         onClick={() => setOpen(true)}

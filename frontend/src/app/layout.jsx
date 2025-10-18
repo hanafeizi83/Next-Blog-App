@@ -3,6 +3,7 @@ import KalamehFont from "@/constans/localFont";
 import AuthProvider from 'context/AuthContext';
 import { Toaster } from 'react-hot-toast';
 import ReactQueryProviders from 'providers/ReactQueryProviders';
+import DarkModeProvider from 'context/DarkModeContext';
 
 export const metadata = {
     title: {
@@ -19,10 +20,13 @@ export default function RootLayout({ children }) {
                 className={`${KalamehFont.variable} sans`}
             >
                 <ReactQueryProviders>
-                    <AuthProvider>
-                        <Toaster />
-                        {children}
-                    </AuthProvider>
+                    <DarkModeProvider>
+                        <AuthProvider>
+                            <Toaster />
+                            {children}
+                        </AuthProvider>
+                    </DarkModeProvider>
+
                 </ReactQueryProviders>
             </body>
         </html>

@@ -9,7 +9,7 @@ function BlogComment({ blog }) {
         <>
             <div className="w-full lg:w-[75%]">
                 <div className="flex items-center gap-2">
-                    <h2 className="text-2xl font-medium">نظرات</h2>
+                    <h2 className="text-2xl font-medium text-secondary-800">نظرات</h2>
                     <div className="bg-primary-700 rounded-full flex items-center justify-center px-5 text-secondary-0">{blog?.commentsCount}</div>
                 </div>
                 <AddCommentForm blogId={blog?._id} />

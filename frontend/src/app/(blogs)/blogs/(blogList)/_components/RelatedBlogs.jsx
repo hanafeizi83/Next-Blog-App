@@ -6,7 +6,7 @@ import Link from "next/link";
 function RelatedBlogs({ blogs }) {
     return (
         <div className="space-y-2 w-full">
-            <h2 className="font-medium text-2xl">پست های مرتبط</h2>
+            <h2 className="font-medium text-2xl text-secondary-800">پست های مرتبط</h2>
             {
                 blogs.length === 0 && <p className="py-6 text-center text-secondary-600 text-lg">پست مرتبطی با این پست یافت نشد</p>
             }

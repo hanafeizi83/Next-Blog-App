@@ -44,7 +44,7 @@ function AddCommentForm({ blogId }) {
                         type="text"
                         id='text'
                         placeholder='اضافه کردن نظر جدید ...'
-                        className='outline-0 h-full w-full'
+                        className='outline-0 h-full w-full text-secondary-800'
                         value={text}
                         onChange={(e)=>setText(e.target.value)}
                     />

@@ -21,7 +21,7 @@ function Search({ containerClass ,inputClass , iconClass }) {
         router.push(`${pathname}?${newParams}`)
     }
     return (
-        <form className={`rounded-lg flex p-1 ${containerClass}`} onSubmit={handleSubmit}>
+        <form className={`rounded-lg text-secondary-800 flex p-1 ${containerClass}`} onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder="جستجو ..."
