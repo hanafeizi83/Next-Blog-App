@@ -11,8 +11,8 @@ import Image from 'next/image';
 import FileInput from '@/ui/FileInput';
 import { IoClose } from "react-icons/io5";
 import ButtonIcon from '@/ui/ButtonIcon';
-
-
+import useCreateBlog from '../hook/useCreateBlog';
+import { useRouter } from 'next/navigation';
 
 const skema = yup.object({
     title: yup
@@ -40,14 +40,26 @@ const skema = yup.object({
 function CreateBlogForm() {
     const { categories } = useGetCategories();
     const [coverImageUrl, setCoverImageUrl] = useState(null);
-
+    const router=useRouter();
+    const { createBlog, isCreating } = useCreateBlog();
     const { register, handleSubmit, formState: { errors }, control, setValue } = useForm({
         mode: 'onTouched',
         resolver: yupResolver(skema),
     });
+
     const onSubmit = (values) => {
-        console.log(values);
+        const formData = new FormData();
+        for (const key in values) {
+            formData.append(key, values[key])
+        }
+        createBlog(formData,{
+            onSuccess:()=>{
+                router.push('/profile/blogs')
+            }
+        });
+
     }
+
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -128,7 +140,7 @@ function CreateBlogForm() {
                 }
                 <ButtonIcon
                     variant={'red'}
-                    className='absolute top-1 right-3'
+                    className='!absolute top-1 right-3'
                     onClick={(e) => {
                         e.preventDefault();
                         setCoverImageUrl(null)

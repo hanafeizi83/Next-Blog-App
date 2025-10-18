@@ -21,3 +21,7 @@ export function likeBlogApi(blogId) {
 export function bookmarkBlogApi(blogId) {
     return http.post(`/post/bookmark/${blogId}`).then(({ data }) => data.data);
 }
+
+export function createBlogApi(data) {
+    return http.post(`/post/create`,data).then(({ data }) => data.data);
+}
