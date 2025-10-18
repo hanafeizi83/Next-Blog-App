@@ -8,6 +8,7 @@ import { IoCheckmarkSharp, IoClose } from 'react-icons/io5';
 import { PiDotsThreeOutlineVerticalFill } from 'react-icons/pi';
 import { FaRegTrashCan } from "react-icons/fa6";
 import { TfiPencilAlt } from "react-icons/tfi";
+import { DeleteButton } from './Buttons';
 
 const blogTypeStyle = {
     free: {
@@ -19,7 +20,7 @@ const blogTypeStyle = {
         title: 'پولی'
     }
 }
-function BlogsTableRow({ title, coverImageUrl, category, type, readingTime, author, updatedAt, isLiked, isBookmarked, commentsCount, slug }) {
+function BlogsTableRow({ _id, title, coverImageUrl, category, type, readingTime, author, updatedAt, isLiked, isBookmarked, commentsCount, slug }) {
     const updateDate = new Date(updatedAt).toLocaleDateString('fa-IR', { year: 'numeric', month: 'long', day: 'numeric' });
     return (
         <Tabel.Row>
@@ -70,9 +71,7 @@ function BlogsTableRow({ title, coverImageUrl, category, type, readingTime, auth
             </td>
             <td>
                 <div className="flex items-center gap-2">
-                    <ButtonIcon variant={'red'} >
-                        <FaRegTrashCan />
-                    </ButtonIcon>
+                    <DeleteButton title={title} blogId={_id} />
                     <ButtonIcon variant={'primary'} >
                         <TfiPencilAlt />
                     </ButtonIcon>

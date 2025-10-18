@@ -23,5 +23,9 @@ export function bookmarkBlogApi(blogId) {
 }
 
 export function createBlogApi(data) {
-    return http.post(`/post/create`,data).then(({ data }) => data.data);
+    return http.post(`/post/create`, data).then(({ data }) => data.data);
+}
+
+export function deleteBlogApi(blogId , options) {
+    return http.delete(`/post/remove/${blogId}`,options).then(({ data }) => data.data);
 }

@@ -8,12 +8,12 @@ const SortItems = [
     {
         id: 1,
         title: 'تاریخ ایجاد (جدید ترین ها)',
-        value: 'earliest'
+        value: 'latest'
     },
     {
         id: 2,
         title: 'تاریخ ایجاد(قدیمی ترین ها)',
-        value: 'latest'
+        value: 'earliest'
     },
     {
         id: 3,
