@@ -6,6 +6,8 @@ import { startTransition, useActionState, useEffect, useState } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import deleteBlogAction from "../deleteBlogAction";
+import Link from "next/link";
+import { TfiPencilAlt } from "react-icons/tfi";
 
 export function DeleteButton({ title, blogId }) {
     const [isopen, setIsOpen] = useState(false);
@@ -16,8 +18,8 @@ export function DeleteButton({ title, blogId }) {
 
     useEffect(() => {
         if (state?.message) {
-            toast.success(state.message);
-            setIsOpen(false)
+            toast.success(message)
+            setIsOpen(false);
         }
         if (state?.error) {
             toast.error(state.error)
@@ -29,8 +31,20 @@ export function DeleteButton({ title, blogId }) {
         </ButtonIcon>
         <Modal open={isopen} title={`حذف بلاگ ${title}`} onClose={() => setIsOpen(false)}>
             <ConfirmDelete title={`بلاگ ${title}`} onClose={() => setIsOpen(false)} onConfirm={(formData) => {
-                formAction({ formData, blogId })
+                startTransition(() => {
+                    formAction({ formData, blogId });
+                });
             }} />
         </Modal>
     </>
+}
+
+export function EditButton({blogId}) {
+    return (
+        <Link href={`/profile/blogs/${blogId}`}>
+            <ButtonIcon variant={'primary'} >
+                <TfiPencilAlt />
+            </ButtonIcon>
+        </Link>
+    )
 }

@@ -26,6 +26,14 @@ export function createBlogApi(data) {
     return http.post(`/post/create`, data).then(({ data }) => data.data);
 }
 
-export function deleteBlogApi(blogId , options) {
-    return http.delete(`/post/remove/${blogId}`,options).then(({ data }) => data.data);
+export function editBlogApi({ blogId, data }) {
+    return http.patch(`/post/update/${blogId}`, data).then(({ data }) => data.data);
+}
+
+export function deleteBlogApi(blogId, options) {
+    return http.delete(`/post/remove/${blogId}`, options).then(({ data }) => data.data);
+}
+
+export function getBlogById(blogId, options) {
+    return http.get(`/post/${blogId}`, options).then(({ data }) => data.data);
 }

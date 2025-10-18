@@ -6,13 +6,15 @@ import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup'
 import useGetCategories from '../hook/useGetCategories';
 import Button from '@/ui/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import FileInput from '@/ui/FileInput';
 import { IoClose } from "react-icons/io5";
 import ButtonIcon from '@/ui/ButtonIcon';
 import useCreateBlog from '../hook/useCreateBlog';
 import { useRouter } from 'next/navigation';
+import { imageUrlToFile } from '@/utils/fileFormmater';
+import useEditBlog from '../hook/useEditBlog';
 
 const skema = yup.object({
     title: yup
@@ -37,27 +39,76 @@ const skema = yup.object({
     category: yup.string().required("دسته بندی ضروری است"),
 }).required()
 
-function CreateBlogForm() {
+function CreateBlogForm({ blog = {} }) {
+    const { _id: editId } = blog;
+    const isEditSession = Boolean(editId);
+    console.log(isEditSession);
+    
+    const {
+        title,
+        text,
+        slug,
+        briefText,
+        readingTime,
+        coverImage,
+        category,
+        coverImageUrl: editCoverImageUrl
+    } = blog;
     const { categories } = useGetCategories();
-    const [coverImageUrl, setCoverImageUrl] = useState(null);
-    const router=useRouter();
+    const [coverImageUrl, setCoverImageUrl] = useState(editCoverImageUrl || null);
+    const router = useRouter();
     const { createBlog, isCreating } = useCreateBlog();
-    const { register, handleSubmit, formState: { errors }, control, setValue } = useForm({
+    const { editBlog, isEditing } = useEditBlog();
+
+    let editBlogData={};
+
+    if (isEditSession) {
+        editBlogData = {
+            text,
+            briefText,
+            slug,
+            title,
+            readingTime,
+            coverImage,
+            category: category?._id
+        }
+    }
+    const { register, handleSubmit, reset, formState: { errors }, control, setValue } = useForm({
         mode: 'onTouched',
         resolver: yupResolver(skema),
+        defaultValues: editBlogData
     });
+
+    useEffect(() => {
+        if (editCoverImageUrl) {
+            async function getFile() {
+                const file = await imageUrlToFile(editCoverImageUrl);
+                setValue('coverImage', file)
+            }
+            getFile();
+        }
+    }, [editId]);
 
     const onSubmit = (values) => {
         const formData = new FormData();
         for (const key in values) {
             formData.append(key, values[key])
         }
-        createBlog(formData,{
-            onSuccess:()=>{
-                router.push('/profile/blogs')
-            }
-        });
 
+        if (isEditSession) {
+            editBlog({ blogId: editId, data:formData }, {
+                onSuccess: () => {
+                    reset();
+                    router.push('/profile/blogs')
+                }
+            })
+        } else {
+            createBlog(formData, {
+                onSuccess: () => {
+                    router.push('/profile/blogs')
+                }
+            });
+        }
     }
 
     return (
@@ -124,7 +175,11 @@ function CreateBlogForm() {
                     )}
                 />
 
-                <Button>ایجاد پست جدید</Button>
+                <Button>
+                    {
+                        isEditSession ? 'ویرایش بلاگ' : ' ایجاد بلاگ جدید  '
+                    }
+                </Button>
 
 
             </form>

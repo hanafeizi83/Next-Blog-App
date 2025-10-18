@@ -8,7 +8,7 @@ import { IoCheckmarkSharp, IoClose } from 'react-icons/io5';
 import { PiDotsThreeOutlineVerticalFill } from 'react-icons/pi';
 import { FaRegTrashCan } from "react-icons/fa6";
 import { TfiPencilAlt } from "react-icons/tfi";
-import { DeleteButton } from './Buttons';
+import { DeleteButton, EditButton } from './Buttons';
 
 const blogTypeStyle = {
     free: {
@@ -72,9 +72,7 @@ function BlogsTableRow({ _id, title, coverImageUrl, category, type, readingTime,
             <td>
                 <div className="flex items-center gap-2">
                     <DeleteButton title={title} blogId={_id} />
-                    <ButtonIcon variant={'primary'} >
-                        <TfiPencilAlt />
-                    </ButtonIcon>
+                    <EditButton blogId={_id} />
                     <Link href={`/blogs/${slug}`} className='flex items-start justify-center'>
                         <ButtonIcon variant={'secondary'} >
                             <PiDotsThreeOutlineVerticalFill />
