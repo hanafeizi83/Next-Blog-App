@@ -1,13 +1,9 @@
-import { getBlogById } from "@/services/postServices"
 import AvatarUser from "@/ui/AvatarUser";
-import ButtonIcon from "@/ui/ButtonIcon";
 import Table from "@/ui/Table";
 import setCookieOnReq from "@/utils/setCookieOnReq";
-import truncateText from "@/utils/trancateText";
 import { cookies } from "next/headers";
-import { FaRegTrashCan } from "react-icons/fa6";
-import { TfiPencilAlt } from "react-icons/tfi";
-import { DeleteButton } from "./Buttons";
+import { DeleteButton, EditButton } from "./Buttons";
+import truncateText from "@/utils/trancateText";
 
 const statusStyle = {
     0: {
@@ -16,7 +12,7 @@ const statusStyle = {
     },
     1: {
         className: 'bg-secondary-100 text-secondary-600 px-4',
-        title: 'در حال انتظار'
+        title: 'در حال بررسی'
     },
     2: {
         className: 'badge--success',
@@ -28,13 +24,7 @@ const statusStyle = {
 async function CommentRow({ comment }) {
     const blogId = Number(comment.post);
     const { _id:commentId,user, content: { text }, status, createdAt, updatedAt } = comment;
-    // console.log(comment);
-    const cookiesStore = cookies();
-    const options = setCookieOnReq(cookiesStore);
-    // const { post: blog } = await getBlogById(blogId, options);
-// console.log(blog);
-
-
+  
     const dateOptions = {
         year: 'numeric',
         day: 'numeric',
@@ -50,8 +40,8 @@ async function CommentRow({ comment }) {
                 />
                 <h2 className='font-medium'>{user?.name}</h2>
             </td>
-            <td>{text}</td>
-            <td></td>
+            <td>{truncateText(text,20)}</td>
+            {/* <td></td> */}
             <td>
                 <span className={`badge ${statusStyle[status].className}`}>{statusStyle[status].title}</span>
             </td>
@@ -59,10 +49,8 @@ async function CommentRow({ comment }) {
             <td>{new Date(updatedAt).toLocaleDateString('fa', dateOptions)}</td>
             <td>
                 <div className="flex items-center w-full justify-evenly">
-                    <DeleteButton text={text} commentId={commentId}/>
-                    <ButtonIcon variant='primary'>
-                        <TfiPencilAlt />
-                    </ButtonIcon>
+                    <DeleteButton name={user?.name} text={text} commentId={commentId}/>
+                    <EditButton name={user?.name} commentId={commentId} />
                 </div>
 
             </td>

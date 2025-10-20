@@ -6,8 +6,10 @@ import { startTransition, useActionState, useEffect, useState } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
 import deleteCommentAction from "../deleteCommentAction";
 import toast from "react-hot-toast";
+import { TfiPencilAlt } from "react-icons/tfi";
+import EditCommentFrom from "./EditCommentFrom";
 
-export function DeleteButton({ text, commentId }) {
+export function DeleteButton({ text, commentId, name }) {
     const [isOpen, setIsOpen] = useState(false);
     const [state, formAction] = useActionState(deleteCommentAction, {
         message: '',
@@ -29,13 +31,13 @@ export function DeleteButton({ text, commentId }) {
                 title={`حذف نظر`}
                 open={isOpen}
                 onClose={() => setIsOpen(false)}
-                description={``}
+                description={name}
             >
-                <ConfirmDelete title={`نظر (${text})`} onClose={() => setIsOpen(false)} onConfirm={(formData) => {
-                    startTransition(() => {
-                        formAction({ formData, commentId });
-                    });
-                }} />
+                <ConfirmDelete title={`نظر (${text})`} onClose={() => setIsOpen(false)}  onConfirm={async (formData) => {
+                        startTransition(() => {
+                            formAction({ formData, commentId });
+                        });
+                    }} />
             </Modal>
             <ButtonIcon onClick={() => setIsOpen(true)} variant='red'>
                 <FaRegTrashCan />
@@ -44,3 +46,22 @@ export function DeleteButton({ text, commentId }) {
     )
 }
 
+export function EditButton({ commentId, name }) {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+        <>
+            <Modal
+                title={`ویرایش نظر`}
+                open={isOpen}
+                onClose={() => setIsOpen(false)}
+                description={name}
+
+            >
+                <EditCommentFrom commentId={commentId} onClose={() => setIsOpen(false)} />
+            </Modal>
+            <ButtonIcon onClick={() => setIsOpen(true)} variant='primary'>
+                <TfiPencilAlt />
+            </ButtonIcon>
+        </>
+    )
+}
