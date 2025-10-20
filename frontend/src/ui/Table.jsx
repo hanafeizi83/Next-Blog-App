@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Tabel({ children }) {
+function Table({ children }) {
     return (
         <table className='w-full overflow-x-auto'>
             {children}
@@ -33,8 +33,8 @@ function TableRow({ children }) {
         </tr>
     )
 }
-export default Tabel
+export default Table
 
-Tabel.Body = TableBody;
-Tabel.Header = TableHeader;
-Tabel.Row = TableRow;
+Table.Body = TableBody;
+Table.Header = TableHeader;
+Table.Row = TableRow;

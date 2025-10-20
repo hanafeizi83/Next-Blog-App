@@ -1,9 +1,6 @@
-// import { useFormStatus } from 'react-dom'
 import Button from './Button'
-import Loading from './Loading';
 
 function ConfirmDelete({ title, onClose, onConfirm }) {
-    // const { pending } = useFormStatus();
     return (
         <div>
             <h2 className='text-secondary-800 font-medium'>آیا از حذف {title} مطمئن هستید ؟</h2>
@@ -13,8 +10,8 @@ function ConfirmDelete({ title, onClose, onConfirm }) {
                     variant='danger'
                     type='submit'
                     onClick={onConfirm}
-                >تایید
-{/* {pending ? <Loading/> :''} */}
+                >
+                    تایید
                 </Button>
             </form>
         </div>

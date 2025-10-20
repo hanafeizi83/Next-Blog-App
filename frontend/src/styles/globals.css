@@ -159,6 +159,10 @@ body {
     @apply bg-green-200 text-green-600 px-4;
   }
 
+  .badge--error {
+    @apply bg-rose-100 text-rose-600 px-4;
+  }
+
   .iconSideBar {
     @apply lg:w-6 lg:h-6 w-8 h-8;
   }

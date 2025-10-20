@@ -1,6 +1,6 @@
 import AvatarUser from '@/ui/AvatarUser'
 import ButtonIcon from '@/ui/ButtonIcon';
-import Tabel from '@/ui/Tabel'
+import Table from '@/ui/Table';
 import truncateText from '@/utils/trancateText';
 import Link from 'next/link';
 import React from 'react'
@@ -25,7 +25,7 @@ const blogTypeStyle = {
 function LastBlogTableRow({ title, coverImageUrl, category, type, readingTime, author, updatedAt, isLiked, isBookmarked }) {
     const updateDate = new Date(updatedAt).toLocaleDateString('fa-IR', { year: 'numeric', month: 'long', day: 'numeric' });
     return (
-        <Tabel.Row>
+        <Table.Row>
             <td className='flex items-center gap-2'>
                 <AvatarUser
                     className={'w-12 h-12'}
@@ -75,7 +75,7 @@ function LastBlogTableRow({ title, coverImageUrl, category, type, readingTime, a
                     </ButtonIcon>
                 </Link>
             </td>
-        </Tabel.Row>
+        </Table.Row>
     )
 }
 

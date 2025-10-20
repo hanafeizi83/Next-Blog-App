@@ -1,14 +1,12 @@
 import AvatarUser from '@/ui/AvatarUser';
 import ButtonIcon from '@/ui/ButtonIcon';
-import Tabel from '@/ui/Tabel'
 import truncateText from '@/utils/trancateText';
 import Link from 'next/link';
 import React from 'react'
 import { IoCheckmarkSharp, IoClose } from 'react-icons/io5';
 import { PiDotsThreeOutlineVerticalFill } from 'react-icons/pi';
-import { FaRegTrashCan } from "react-icons/fa6";
-import { TfiPencilAlt } from "react-icons/tfi";
 import { DeleteButton, EditButton } from './Buttons';
+import Table from '@/ui/Table';
 
 const blogTypeStyle = {
     free: {
@@ -23,7 +21,7 @@ const blogTypeStyle = {
 function BlogsTableRow({ _id, title, coverImageUrl, category, type, readingTime, author, updatedAt, isLiked, isBookmarked, commentsCount, slug }) {
     const updateDate = new Date(updatedAt).toLocaleDateString('fa-IR', { year: 'numeric', month: 'long', day: 'numeric' });
     return (
-        <Tabel.Row>
+        <Table.Row>
             <td className='flex items-center gap-2'>
                 <AvatarUser
                     className={'w-12 h-12'}
@@ -81,7 +79,7 @@ function BlogsTableRow({ _id, title, coverImageUrl, category, type, readingTime,
                 </div>
 
             </td>
-        </Tabel.Row>
+        </Table.Row>
     )
 }
 

@@ -9,7 +9,7 @@ async function page({ params }) {
     const cookiesStore = cookies();
     const options = setCookieOnReq(cookiesStore);
     const { post: blog } = await getBlogById(blogId, options);
-
+    
     const breadCrumbs = [
         {
             id: 1,

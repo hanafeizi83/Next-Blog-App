@@ -1,11 +1,11 @@
 import React from 'react'
-import Tabel from '@/ui/Tabel'
 import BlogsTableRow from './BlogsTableRow';
+import Table from '@/ui/Table';
 
 async function BlogTable({posts}) {
     return (
-        <Tabel>
-            <Tabel.Header>
+        <Table>
+            <Table.Header>
                 <th>عنوان</th>
                 <th>نوع</th>
                 <th>زمان مطالعه</th>
@@ -15,13 +15,13 @@ async function BlogTable({posts}) {
                 <th>ذخیره شده</th>
                 <th>تعداد نظرات</th>
                 <th>عملیات</th>
-            </Tabel.Header>
-            <Tabel.Body>
+            </Table.Header>
+            <Table.Body>
                 {posts && posts.map(post => (
                     <BlogsTableRow key={post._id} {...post} />
                 ))}
-            </Tabel.Body>
-        </Tabel>
+            </Table.Body>
+        </Table>
     )
 }
 
