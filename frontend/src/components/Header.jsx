@@ -8,6 +8,7 @@ import useOutsideClick from "@/hook/useOutsideClick";
 import Link from "next/link";
 import { useAuth } from "context/AuthContext";
 import AvatarUser from "@/ui/AvatarUser";
+import DarkmodeBtn from "@/ui/DarkmodeBtn";
 
 const navlinkes = [
   {
@@ -56,7 +57,9 @@ function Header() {
 
             <Navlink data={navlinkes} />
             <Search containerClass='lg:flex hidden' />
-            {
+            <div className="flex items-center gap-2">
+              <DarkmodeBtn />
+               {
               user ?
                 <div className="grid lg:grid-cols-[3rem_1fr] grid-rows-2 lg:grid-rows-1 gap-x-2 items-center">
                   <Link href='/profile'>
@@ -81,6 +84,8 @@ function Header() {
                   <Link href='/signin'>ورود</Link>
                 </Button>
             }
+            </div>
+           
 
           </div>
           <button
