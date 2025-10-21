@@ -1,4 +1,6 @@
 import { faBookOpenReader, faCode, faEarthAmericas, faHandshake, faLandmarkDome, faList, faMoneyBillTrendUp, faPersonSwimming } from "@fortawesome/free-solid-svg-icons";
+import http from "./httpServices";
+
 const categoriesIcon = {
     sport: {
         slug: 'sport',
@@ -27,8 +29,13 @@ const categoriesIcon = {
     historical: {
         slug: 'historical',
         icon: faLandmarkDome
+    },
+    accessory: {
+        slug: 'accessory',
+        icon: faList
     }
 }
+
 export async function getCategoriesApi() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/category/list`);
     const { data: { categories } } = await res.json();
@@ -37,4 +44,8 @@ export async function getCategoriesApi() {
     })
 
     return newCategories
+}
+
+export async function createCategoryApi(data) {
+    return http.post('/category/add', data).then(({ data }) => data.data)
 }

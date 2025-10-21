@@ -27,7 +27,7 @@ function CategoriesPage() {
         <div>
             <BreadCrumbs breadCrumbs={breadCrumbs} />
             <div className="flex items-center justify-between">
-                <h2 className="font-medium text-xl text-secondary-800 my-3">لیست نظرات</h2>
+                <h2 className="font-medium text-xl text-secondary-800 my-3">لیست دسته بندی ها</h2>
                 <Link
                     href={'/profile/categories/create'}
                     className='flex items-center gap-2 text-secondary-0 btn btn--primary rounded-lg duration-300 py-2 px-4'
