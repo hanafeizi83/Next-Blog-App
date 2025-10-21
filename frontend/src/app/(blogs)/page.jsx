@@ -45,7 +45,7 @@ export default function Home() {
             <Link href='/blogs'>مطالعه بلاگ ها</Link>
           </Button>
           <Button className='rounded-lg !py-3 !px-6' variant='secondary'>
-          <Link href='/dashboard'>مدیریت بلاگ ها</Link>
+          <Link href='/profile'>مدیریت بلاگ ها</Link>
           </Button>
 
         </div>

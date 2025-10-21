@@ -7,6 +7,7 @@ import { addComment } from 'lib/action';
 import { useFormStatus } from 'react-dom';
 import toast from 'react-hot-toast';
 import Loading from '@/ui/Loading';
+import { useRouter } from 'next/navigation';
 
 const initialState = {
     message: '',
@@ -15,13 +16,16 @@ const initialState = {
 
 function AddCommentForm({ blogId }) {
     const [text, setText] = useState('');
+    const router = useRouter();
     const { user } = useAuth();
     const { pending } = useFormStatus();
     const [state, formAction] = useActionState(addComment, initialState);
 
     useEffect(() => {
         if (state.message) {
-            toast.success(state?.message)
+            toast.success(state?.message);
+            setText('');
+            router.refresh();
         }
 
         if (state.error) {
@@ -46,16 +50,16 @@ function AddCommentForm({ blogId }) {
                         placeholder='اضافه کردن نظر جدید ...'
                         className='outline-0 h-full w-full text-secondary-800'
                         value={text}
-                        onChange={(e)=>setText(e.target.value)}
+                        onChange={(e) => setText(e.target.value)}
                     />
                     <button
                         // type='submit'
                         // onClick={(e) => e.preventDefault()}
                         className='w-11 h-full text-secondary-0 rounded-full bg-primary-800 flex items-center justify-center cursor-pointer'>
-                            {
-                                pending ? <Loading size='20'/> :<BiSolidSend className='w-6 h-6 rotate-180' />
-                            }
-                        
+                        {
+                            pending ? <Loading size='20' /> : <BiSolidSend className='w-6 h-6 rotate-180' />
+                        }
+
                     </button>
                 </div>
             </form>
