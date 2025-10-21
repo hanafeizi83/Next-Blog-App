@@ -1,4 +1,3 @@
-import Avatar from "@/ui/Avatar"
 import { RiDashboardFill } from "react-icons/ri";
 import { FaComments } from "react-icons/fa6";
 import { FaUsers } from "react-icons/fa";
@@ -6,8 +5,8 @@ import { BiSolidCategoryAlt } from "react-icons/bi";
 import { IoMdSettings } from "react-icons/io";
 import { IoDocumentText } from "react-icons/io5";
 import SidebarLink from "./SidebarLink";
-import { TbLogout } from "react-icons/tb";
 import SideBarUSerImage from "./SideBarUSerImage";
+import LogoutButton from "@/ui/LogoutButton";
 
 const navLinksData = [
   {
@@ -67,16 +66,7 @@ function Sidebar() {
             ))
           }
         </div>
-        <div className="relative group">
-          <li className="flex items-center justify-center lg:justify-start gap-2 text-error cursor-pointer">
-            <TbLogout className='iconSideBar' />
-            <span className="text-lg font-medium hidden lg:flex">خروج</span>
-          </li>
-          <span className="absolute bottom-full right-[-.7rem] mb-2 hidden lg:group-hover:hidden group-hover:block
-               bg-secondary-800 text-white text-xs px-2 py-1 rounded-lg shadow-lg">
-                خروج
-            </span>
-        </div>
+        <LogoutButton />
       </ul>
     </div>
   )

@@ -1,5 +1,5 @@
 "use client";
-import { getUserApi, signinApi, signupApi } from "@/services/authServices";
+import { getUserApi, logoutApi, signinApi, signupApi } from "@/services/authServices";
 import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useReducer } from "react";
 import toast from "react-hot-toast";
@@ -36,6 +36,13 @@ function authReducer(state, { type, payload }) {
                 isLoading: false,
                 error: null,
                 user: payload
+            }
+        }
+        case 'logout': {
+            return {
+                isLoading: false,
+                error: null,
+                user: null,
             }
         }
         case 'loaded/user': {
@@ -102,7 +109,23 @@ export default function AuthProvider({ children }) {
         }
     }
 
-    return <authContext.Provider value={{ user, error, isLoading, signup, signin }}>
+    async function logout() {
+        dispatch({ type: 'isLoading' });
+        try {
+             await logoutApi();
+            toast.success('شما با موفقیت خارج شدید');
+            dispatch({ type: 'logout' });
+            router.push('/');
+
+        } catch (error) {
+            const errorMsg = error?.response?.data?.message;
+            toast.error(errorMsg);
+            dispatch({ type: 'rejected', payload: errorMsg });
+
+        }
+    }
+
+    return <authContext.Provider value={{ user, error, isLoading, signup, signin,logout }}>
         {children}
     </authContext.Provider>
 }
