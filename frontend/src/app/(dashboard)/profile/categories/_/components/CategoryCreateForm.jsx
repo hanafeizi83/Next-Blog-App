@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import useCreateCategory from '../hook/useCreateCategory';
 import { useRouter } from 'next/navigation';
+import { useEditCategory } from '../hook/useEditCatefgory';
 
 const skema = yup.object({
     title: yup.string().required('عنوان ضروری است'),
@@ -13,21 +14,44 @@ const skema = yup.object({
     description: yup.string().required('عنوان ضروری است'),
 }).required()
 
-function CategoryCreateForm() {
+function CategoryCreateForm({ category = {} }) {
     const { createCategory, isCreating } = useCreateCategory();
+    const { editCategory, isEditing } = useEditCategory();
+    const { _id: categoryId, title, englishTitle, description } = category;
+    const isEditSession = Boolean(categoryId);
+
+    let editData = {};
+    if (isEditSession) {
+        editData = {
+            title,
+            englishTitle,
+            description
+        }
+    }
+
     const router = useRouter();
     const { register, formState: { errors }, handleSubmit, reset } = useForm({
         resolver: yupResolver(skema),
-        mode: 'onTouched'
+        mode: 'onTouched',
+        defaultValues: editData
     });
 
     const onSubmit = (values) => {
-        createCategory(values, {
-            onSuccess: () => {
-                router.push('/profile/categories');
-                reset();
-            }
-        })
+        if (isEditSession) {
+            editCategory({ data: values, categoryId }, {
+                onSuccess: () => {
+                    router.push('/profile/categories');
+                    reset();
+                }
+            })
+        } else {
+            createCategory(values, {
+                onSuccess: () => {
+                    router.push('/profile/categories');
+                    reset();
+                }
+            })
+        }
     }
 
     return (
@@ -51,7 +75,10 @@ function CategoryCreateForm() {
                 errors={errors}
             />
             <Button type='submit' className={'w-full'}>
-                ایجاد دسته بندی جدید
+            {
+                isCreating ? 'ایجاد دسته بندی جدید' :'ویرایش دسته یندی'
+            }
+                
             </Button>
         </form>
     )

@@ -2,6 +2,7 @@
 import ButtonIcon from "@/ui/ButtonIcon";
 import ConfirmDelete from "@/ui/ConfirmDelete";
 import Modal from "@/ui/Modal";
+import Link from "next/link";
 import { useState } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { TfiPencilAlt } from "react-icons/tfi";
@@ -39,11 +40,12 @@ export function DeleteButton({ text }) {
     )
 }
 
-export function EditButton() {
-    const [isOpen, setIsOpen] = useState(false);
+export function EditButton({ categoryId }) {
     return (
-        <ButtonIcon onClick={() => setIsOpen(true)} variant='primary'>
-            <TfiPencilAlt />
-        </ButtonIcon>
+        <Link href={`/profile/categories/${categoryId}`}>
+            <ButtonIcon variant={'primary'} >
+                <TfiPencilAlt />
+            </ButtonIcon>
+        </Link>
     )
 }

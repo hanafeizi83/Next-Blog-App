@@ -21,7 +21,7 @@ function CategoryTableRow({ category }) {
             <td>
                 <div className="flex items-center justify-evenly">
                     <DeleteButton text={title}/>
-                    <EditButton />
+                    <EditButton categoryId={category._id}/>
                 </div>
             </td>
         </Table.Row>
