@@ -76,9 +76,8 @@ function CategoryCreateForm({ category = {} }) {
             />
             <Button type='submit' className={'w-full'}>
             {
-                isCreating ? 'ایجاد دسته بندی جدید' :'ویرایش دسته یندی'
+                !isEditSession ? 'ایجاد دسته بندی جدید' :'ویرایش دسته یندی'
             }
-                
             </Button>
         </form>
     )
