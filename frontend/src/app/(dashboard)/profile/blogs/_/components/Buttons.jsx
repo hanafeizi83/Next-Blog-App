@@ -5,7 +5,7 @@ import Modal from "@/ui/Modal";
 import { startTransition, useActionState, useEffect, useState } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
 import toast from "react-hot-toast";
-import deleteBlogAction from "../deleteBlogAction";
+import deleteBlogAction from "../action/deleteBlogAction";
 import Link from "next/link";
 import { TfiPencilAlt } from "react-icons/tfi";
 

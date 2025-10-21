@@ -4,7 +4,7 @@ import ConfirmDelete from "@/ui/ConfirmDelete";
 import Modal from "@/ui/Modal";
 import { startTransition, useActionState, useEffect, useState } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
-import deleteCommentAction from "../deleteCommentAction";
+import deleteCommentAction from "../action/deleteCommentAction";
 import toast from "react-hot-toast";
 import { TfiPencilAlt } from "react-icons/tfi";
 import EditCommentFrom from "./EditCommentFrom";

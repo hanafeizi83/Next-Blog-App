@@ -2,7 +2,7 @@
 import Button from '@/ui/Button'
 import Select from '@/ui/Select'
 import React, { useActionState, useEffect } from 'react'
-import editCommentAction from '../editCommentAction';
+import editCommentAction from '../action/editCommentAction';
 import toast from 'react-hot-toast';
 
 function EditCommentFrom({ onClose, commentId }) {
