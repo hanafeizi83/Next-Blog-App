@@ -2,7 +2,7 @@ import Avatar from "@/ui/Avatar";
 import Button from "@/ui/Button";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
   return (
     <div className='w-full lg:h-[calc(100vh-6rem)] '>
     <div className='h-full bg-[url(/images/world.png)] bg-no-repeat bg-cover  grid grid-cols-1 grid-rows-2 lg:grid-rows-1 lg:grid-cols-[1fr_35rem] gap-6 '>
