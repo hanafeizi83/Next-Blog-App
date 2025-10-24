@@ -1,4 +1,3 @@
-import { getBlogBySlugApi } from "@/services/postServices";
 import Image from "next/image";
 import Author from "../(blogList)/_components/Author";
 import { CiCalendarDate } from "react-icons/ci";
@@ -6,17 +5,27 @@ import { IoTimeOutline } from "react-icons/io5";
 import RelatedBlogs from "../(blogList)/_components/RelatedBlogs";
 import BlogComment from "../(blogList)/_components/comment/BlogComment";
 import NotFound from "app/not-found";
+import { getBlogBySlugApi } from "@/services/postServices";
 
+export async function generateMetadata({ params }) {
+    const { blogSlug } = params || {}
+  
+    const blog = await getBlogBySlugApi(blogSlug)
+  
+    return {
+      title: blog.title,
+      description: blog.briefText
+    }
+  }
 
 async function page({ params }) {
     const { blogSlug } = params;
-    const blog = await getBlogBySlugApi(blogSlug);
+    const blog=await getBlogBySlugApi(blogSlug)
     const dateOfCreate = new Date(blog?.createdAt).toLocaleDateString('fa-IR', { year: 'numeric', month: 'long', day: 'numeric' });
 
-    if(!blog) return NotFound();
+    if (!blog) return NotFound();
     return (
         <>
-
             <div className="grid grid-cols-12 gap-4 !mt-24 mb-5">
                 <div className="col-span-12 lg:col-span-9">
                     <div className='relative w-full h-90 rounded-lg overflow-hidden '>

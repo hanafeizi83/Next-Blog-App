@@ -1,15 +1,8 @@
-import { AnimatePresence ,motion} from 'framer-motion';
 import Link from 'next/link';
-import React from 'react'
 
 function BlogItem({ blog }) {
-    const variants = {
-        hidden: { opacity: 0, x: -200, y: 0 },
-        enter: { opacity: 1, x: 0, y: 0 },
-        exit: { opacity: 0, x: 0, y: -100 },
-      };
     return (
-        <AnimatePresence key={blog._id} mode="popLayout"><motion.div
+        <div
             initial="hidden"
             animate="enter"
             exit="exit"
@@ -49,8 +42,7 @@ function BlogItem({ blog }) {
                 <BlogIntractions blog={blog} />
             </div>
 
-        </motion.div>
-        </AnimatePresence>
+        </div>
     )
 }
 

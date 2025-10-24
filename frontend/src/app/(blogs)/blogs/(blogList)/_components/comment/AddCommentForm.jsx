@@ -14,7 +14,7 @@ const initialState = {
     error: ''
 }
 
-function AddCommentForm({ blogId }) {
+function AddCommentForm({ blogId,blogSlug }) {
     const [text, setText] = useState('');
     const router = useRouter();
     const { user } = useAuth();
@@ -40,7 +40,7 @@ function AddCommentForm({ blogId }) {
                 className={'h-14 w-14'}
             />
             <form action={async (formData) => {
-                await formAction({ formData, blogId, parentId: null })
+                await formAction({ formData, blogId, parentId: null ,blogSlug})
             }}>
                 <div className='border py-0.5 px-1 border-secondary-400 h-12 rounded-lg flex items-center justify-between'>
                     <input
@@ -53,7 +53,7 @@ function AddCommentForm({ blogId }) {
                         onChange={(e) => setText(e.target.value)}
                     />
                     <button
-                        // type='submit'
+                        type='submit'
                         // onClick={(e) => e.preventDefault()}
                         className='w-11 h-full text-secondary-0 rounded-full bg-primary-800 flex items-center justify-center cursor-pointer'>
                         {

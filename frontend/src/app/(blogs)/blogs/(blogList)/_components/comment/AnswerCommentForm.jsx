@@ -12,7 +12,7 @@ const initialState = {
     error: ''
 }
 
-function AnswerCommentForm({ blogId, parentId, onClose }) {
+function AnswerCommentForm({ blogId, parentId, onClose ,blogSlug}) {
     const { pending } = useFormStatus();
     const [state, formAction] = useActionState(addComment, initialState);
 
@@ -29,10 +29,10 @@ function AnswerCommentForm({ blogId, parentId, onClose }) {
 
     return (
         <form className='space-y-2' action={async (formData) => {
-            await formAction({ formData, blogId, parentId })
+            await formAction({ formData, blogId, parentId ,blogSlug})
         }}>
             <TextArea name='text' placeholder={'نظر خود را وارد کنید'} />
-            <Button variant='primary' className='w-full text-secondary-0 flex items-center justify-center'>
+            <Button variant='primary' className='w-full flex items-center justify-center'>
                 {
                     pending ? <Loading /> : 'ثبت نظر'
                 }

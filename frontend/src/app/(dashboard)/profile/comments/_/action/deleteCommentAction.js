@@ -9,8 +9,9 @@ export default async function deleteCommentAction(prevState, { commentId }) {
     const storeCookies = cookies();
     try {
         const options = setCookieOnReq(storeCookies);
-        const { message } = await deleteCommentApi(commentId, options);
+        const res = await deleteCommentApi(commentId, options);
         revalidatePath('/profile/comments');
+        const message = res?.message || 'نظر با موفقیت حذف شد';
         return {
             message
         }
