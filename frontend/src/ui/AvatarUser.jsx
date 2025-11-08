@@ -4,7 +4,7 @@ function AvatarUser({ src, alt, className }) {
     return (
         <div className={`${className} relative`}>
             <Image
-                src={src || '/images/girl1.png'}
+                src={src || '/images/userImage.png'}
                 fill
                 style={{ objectFit: "cover" }}
                 alt={alt}
