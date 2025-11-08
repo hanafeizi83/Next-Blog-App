@@ -54,6 +54,10 @@ export async function editCategoryApi({ data, categoryId }) {
     return http.patch(`/category/update/${categoryId}`, data).then(({ data }) => data.data)
 }
 
+export async function deleteCategoryApi(categoryId,options) {
+    return http.delete(`/category/remove/${categoryId}`,options).then(({ data }) => data.data)
+}
+
 export async function getCategoryByIdApi(id) {
     const { categories } = await http.get('/category/list').then(({ data }) => data.data)
     const category = categories.find(category => category._id == id);

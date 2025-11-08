@@ -20,8 +20,8 @@ function CategoryTableRow({ category }) {
             <td>{new Date(updatedAt).toLocaleDateString('fa', dateOptions)}</td>
             <td>
                 <div className="flex items-center justify-evenly">
-                    <DeleteButton text={title}/>
-                    <EditButton categoryId={category._id}/>
+                    <DeleteButton text={title} categoryId={category._id} />
+                    <EditButton categoryId={category._id} />
                 </div>
             </td>
         </Table.Row>
