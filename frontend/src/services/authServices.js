@@ -8,6 +8,10 @@ export async function signinApi(data) {
     return await http.post('/user/signin', data).then(({ data }) => data.data)
 }
 
+export async function logoutApi() {
+    return await http.post('/user/logout').then(({ data }) => data.data)
+}
+
 export async function getUserApi() {
     return await http.get('/user/profile').then(({ data }) => data.data)
 }

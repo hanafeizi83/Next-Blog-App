@@ -32,7 +32,7 @@ const {isDarkmode}=useDarkmode();
   return (
     <div className='col-span-5 md:col-span-2 col-start-1 row-start-3  md:col-start-1 md:row-start-2 space-y-1' style={{ width: "100%", height: 300 }}>
       <h2 className='font-medium text-xl text-secondary-800'>آمار بلاگ های ذخیره شده و لایک شده</h2>
-      <ResponsiveContainer width="100%" height="100%" className={'bg-secondary-0 shadow-md rounded-3xl'}>
+      <ResponsiveContainer width="100%" height="95%" className={'bg-secondary-0 shadow-md rounded-3xl'}>
         <PieChart>
           <Pie
             data={data}
