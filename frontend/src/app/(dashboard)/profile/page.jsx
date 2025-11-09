@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import Cards from "./_/components/Cards"
 import LastBlogs from "./_/components/LastBlogs"
 import Users from "./_/components/Users"

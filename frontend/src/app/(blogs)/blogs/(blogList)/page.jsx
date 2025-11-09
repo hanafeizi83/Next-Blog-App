@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { cookies } from "next/headers";
 import BlogsList from "./_components/BlogsList"
 import setCookieOnReq from "@/utils/setCookieOnReq";

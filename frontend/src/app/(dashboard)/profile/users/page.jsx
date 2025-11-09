@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import BreadCrumbs from "@/ui/BreadCrumbs"
 import UsersTable from "./_/components/UserTable"
 const breadCrumbs = [

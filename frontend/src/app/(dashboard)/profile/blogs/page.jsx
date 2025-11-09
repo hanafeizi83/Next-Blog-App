@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import React from 'react'
 import BlogTable from './_/components/BlogTable'
 import { GoPlus } from "react-icons/go";

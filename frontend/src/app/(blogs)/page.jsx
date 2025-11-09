@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import Avatar from "@/ui/Avatar";
 import Button from "@/ui/Button";
 import Link from "next/link";
